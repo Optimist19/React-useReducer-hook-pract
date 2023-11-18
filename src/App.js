@@ -16,6 +16,7 @@ import Timer from "./React Quiz/Timer";
 import Challenge from "./Challenge/Challenge";
 import DateCounter from "./DateCounter/DataCounter";
 
+
 const SECS_PER_QUESTION = 30;
 
 const initialState = {
@@ -120,25 +121,26 @@ function App() {
   return (
     <div className="app">
       <DateCounter />
-      <Header />
-      <Main>
-        {status === "loading" && <Loader />}
-        {status === "error" && <Error />}
-        {status === "ready" && <StartScreen />}
-        {/* {status === "ready" && <StartScreen numQuestions={numQuestions} dispatch={ques}/>} */}
-        {status === "active" && (
-          <>
-            <Progress />
-            <Question />
-            <Footer>
-              <Timer />
-              <NextButton />
-            </Footer>
-          </>
-        )}
+      
+        <Header />
+        <Main>
+          {status === "loading" && <Loader />}
+          {status === "error" && <Error />}
+          {status === "ready" && <StartScreen />}
+          {/* {status === "ready" && <StartScreen numQuestions={numQuestions} dispatch={ques}/>} */}
+          {status === "active" && (
+            <>
+              <Progress />
+              <Question />
+              <Footer>
+                <Timer />
+                <NextButton />
+              </Footer>
+            </>
+          )}
 
-        {status === "finished" && <FinishScreen />}
-      </Main>
+          {status === "finished" && <FinishScreen />}
+        </Main>
       <br />
       <h1>Challenge</h1>
       <Challenge />

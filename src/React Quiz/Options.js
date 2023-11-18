@@ -1,6 +1,8 @@
 import React from "react";
+import { useCustomContextApiHook } from './ContextAndReducer/ContextAndReducer'
 
-function Options({ question, dispatch, answer }) {
+function Options() {
+  const { question, dispatch, answer } = useCustomContextApiHook()
   const hasAnswered = answer !== null;
 
   return (
