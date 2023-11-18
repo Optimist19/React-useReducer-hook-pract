@@ -1,8 +1,12 @@
 import React from 'react'
 import Options from './Options'
+import { useCustomContextApiHook } from './ContextAndReducer/ContextAndReducer'
 
-function Question({question, dispatch, answer}) {
+function Question() {
 	// console.log(question)
+
+	const {question, dispatch, answer} = useCustomContextApiHook()
+
   return (
 	<div>
 		<h4>{question.question}</h4>

@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import { useCustomContextApiHook } from "./ContextAndReducer/ContextAndReducer";
 
-function Timer({ dispatch, secondsRemaining }) {
+function Timer() {
 
+  const { dispatch, secondsRemaining } = useCustomContextApiHook
 
   const mins = Math.floor(secondsRemaining / 60)
 

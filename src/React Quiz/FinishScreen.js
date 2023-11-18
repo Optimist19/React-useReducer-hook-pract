@@ -1,5 +1,8 @@
-function FinishScreen({ points, maxPossiblePoints, highscore, dispatch }) {
+import { useCustomContextApiHook } from "./ContextAndReducer/ContextAndReducer";
+
+function FinishScreen() {
   
+  const { points, maxPossiblePoints, highscore, dispatch } = useCustomContextApiHook()
 
   const percentage = (points / maxPossiblePoints) * 100;
 

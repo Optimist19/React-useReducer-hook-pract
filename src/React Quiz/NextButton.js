@@ -1,6 +1,9 @@
 import React from 'react'
+import { useCustomContextApiHook } from './ContextAndReducer/ContextAndReducer'
 
-function NextButton({dispatch, answer, index, numQuestions}) {
+function NextButton() {
+
+	const {dispatch, answer, index, numQuestions} = useCustomContextApiHook()
 
 	if(answer === null) return null
 

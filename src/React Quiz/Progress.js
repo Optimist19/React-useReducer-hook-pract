@@ -1,6 +1,10 @@
 import React from 'react'
+import { useCustomContextApiHook } from './ContextAndReducer/ContextAndReducer'
 
-function Progress({index, numQuestions, points, maxPossiblePoints, answer}) {
+function Progress() {
+
+	const {index, numQuestions, points, maxPossiblePoints, answer} = useCustomContextApiHook()
+
   return (
 	<header className='progress'>
 

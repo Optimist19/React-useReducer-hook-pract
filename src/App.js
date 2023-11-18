@@ -2,7 +2,6 @@
 
 import { useEffect, useReducer } from "react";
 
-
 import Header from "./React Quiz/Header";
 import Main from "./React Quiz/Main";
 import Loader from "./React Quiz/Loader";
@@ -17,11 +16,7 @@ import Timer from "./React Quiz/Timer";
 import Challenge from "./Challenge/Challenge";
 import DateCounter from "./DateCounter/DataCounter";
 
-
-
-
-
-const SECS_PER_QUESTION = 30
+const SECS_PER_QUESTION = 30;
 
 const initialState = {
   questions: [],
@@ -83,15 +78,18 @@ function reducer(state, action) {
       };
 
     case "restart":
-      return{
-        ...initialState, question: state.question, state: "ready"
+      return {
+        ...initialState,
+        question: state.question,
+        state: "ready"
       };
-  
+
     case "tick":
-      return{
-        ...state, secondsRemaining: state.secondsRemaining - 1,
+      return {
+        ...state,
+        secondsRemaining: state.secondsRemaining - 1,
         status: state.secondsRemaining === 0 ? "finished" : state.status
-      }
+      };
 
     default:
       throw new Error("Action unknown");
@@ -100,8 +98,10 @@ function reducer(state, action) {
 
 function App() {
   // const [state, dispatch] = useReducer(reducer, initialState)
-  const [{ questions, status, index, answer, points, highscore, secondsRemaining }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { questions, status, index, answer, points, highscore, secondsRemaining },
+    dispatch
+  ] = useReducer(reducer, initialState);
 
   const numQuestions = questions.length;
 
@@ -117,12 +117,6 @@ function App() {
       .catch((err) => dispatch({ type: "dataFailed" })); //We not interested on the payload for the dataFailed dispatch
   }, []);
 
-  // console.log(questions)
-
-  // function ques(){
-  //   dispatch({type: "start"})
-  // }
-
   return (
     <div className="app">
       <DateCounter />
@@ -130,44 +124,20 @@ function App() {
       <Main>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "ready" && (
-          <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
-        )}
+        {status === "ready" && <StartScreen />}
         {/* {status === "ready" && <StartScreen numQuestions={numQuestions} dispatch={ques}/>} */}
         {status === "active" && (
           <>
-            <Progress
-              index={index}
-              numQuestions={numQuestions}
-              points={points}
-              maxPossiblePoints={maxPossiblePoints}
-              answer={answer}
-            />
-            <Question
-              question={questions[index]}
-              dispatch={dispatch}
-              answer={answer}
-            />
+            <Progress />
+            <Question />
             <Footer>
-              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining}/>
-              <NextButton
-                dispatch={dispatch}
-                answer={answer}
-                index={index}
-                numQuestions={numQuestions}
-              />
+              <Timer />
+              <NextButton />
             </Footer>
           </>
         )}
 
-        {status === "finished" && (
-          <FinishScreen
-            points={points}
-            maxPossiblePoints={maxPossiblePoints}
-            highscore={highscore}
-            dispatch={dispatch}
-          />
-        )}
+        {status === "finished" && <FinishScreen />}
       </Main>
       <br />
       <h1>Challenge</h1>
