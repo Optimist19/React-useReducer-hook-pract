@@ -15,6 +15,7 @@ import FinishScreen from "./React Quiz/FinishScreen";
 import Footer from "./React Quiz/Footer";
 import Timer from "./React Quiz/Timer";
 import Challenge from "./Challenge/Challenge";
+import DateCounter from "./DateCounter/DataCounter";
 
 
 
@@ -124,7 +125,7 @@ function App() {
 
   return (
     <div className="app">
-      {/* <DateCounter /> */}
+      <DateCounter />
       <Header />
       <Main>
         {status === "loading" && <Loader />}
