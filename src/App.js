@@ -2,7 +2,6 @@
 
 import { useEffect, useReducer } from "react";
 
-
 import Header from "./React Quiz/Header";
 import Main from "./React Quiz/Main";
 import Loader from "./React Quiz/Loader";
@@ -15,13 +14,8 @@ import FinishScreen from "./React Quiz/FinishScreen";
 import Footer from "./React Quiz/Footer";
 import Timer from "./React Quiz/Timer";
 import Challenge from "./Challenge/Challenge";
-import DateCounter from "./DateCounter/DataCounter";
 
-
-
-
-
-const SECS_PER_QUESTION = 30
+const SECS_PER_QUESTION = 30;
 
 const initialState = {
   questions: [],
@@ -83,15 +77,18 @@ function reducer(state, action) {
       };
 
     case "restart":
-      return{
-        ...initialState, question: state.question, state: "ready"
+      return {
+        ...initialState,
+        question: state.question,
+        state: "ready"
       };
-  
+
     case "tick":
-      return{
-        ...state, secondsRemaining: state.secondsRemaining - 1,
+      return {
+        ...state,
+        secondsRemaining: state.secondsRemaining - 1,
         status: state.secondsRemaining === 0 ? "finished" : state.status
-      }
+      };
 
     default:
       throw new Error("Action unknown");
@@ -100,8 +97,10 @@ function reducer(state, action) {
 
 function App() {
   // const [state, dispatch] = useReducer(reducer, initialState)
-  const [{ questions, status, index, answer, points, highscore, secondsRemaining }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { questions, status, index, answer, points, highscore, secondsRemaining },
+    dispatch
+  ] = useReducer(reducer, initialState);
 
   const numQuestions = questions.length;
 
@@ -125,7 +124,7 @@ function App() {
 
   return (
     <div className="app">
-      <DateCounter />
+      {/* <DateCounter /> */}
       <Header />
       <Main>
         {status === "loading" && <Loader />}
@@ -149,7 +148,7 @@ function App() {
               answer={answer}
             />
             <Footer>
-              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining}/>
+              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
               <NextButton
                 dispatch={dispatch}
                 answer={answer}
@@ -169,8 +168,6 @@ function App() {
           />
         )}
       </Main>
-      <br />
-      <h1>Challenge</h1>
       <Challenge />
     </div>
   );
