@@ -5,3 +5,5 @@
 	ii. DateCounter
 	iii. React Quiz
 
+## The React quiz has a branch where I implemented contextApi and useReducer together.
+
