@@ -1,9 +1,11 @@
-import React from 'react'
-import { useCustomContextApiHook } from './ContextAndReducer/ContextAndReducer'
+
+import { useQuiz } from './contextApiAndReducer/ContextApiReducer'
+
+
 
 function StartScreen() {
 
-	const {numQuestions, dispatch} = useCustomContextApiHook()
+	const {numQuestions, dispatch} = useQuiz()
 
 
   return (

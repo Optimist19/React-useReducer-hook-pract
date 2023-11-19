@@ -1,9 +1,10 @@
 import React from 'react'
-import { useCustomContextApiHook } from './ContextAndReducer/ContextAndReducer'
+
+import { useQuiz } from './contextApiAndReducer/ContextApiReducer'
 
 function Progress() {
 
-	const {index, numQuestions, points, maxPossiblePoints, answer} = useCustomContextApiHook()
+	const {index, numQuestions, points, maxPossiblePoints, answer} = useQuiz()
 
   return (
 	<header className='progress'>

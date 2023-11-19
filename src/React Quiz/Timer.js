@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useCustomContextApiHook } from "./ContextAndReducer/ContextAndReducer";
+
+import { useQuiz } from "./contextApiAndReducer/ContextApiReducer";
 
 function Timer() {
 
-  const { dispatch, secondsRemaining } = useCustomContextApiHook
+  const { dispatch, secondsRemaining } = useQuiz()
 
   const mins = Math.floor(secondsRemaining / 60)
 
@@ -17,7 +18,13 @@ function Timer() {
     return () => clearInterval(id);
   }, [dispatch]);
 
-  return <div className="timer">{mins} : {seconds}</div>;
+  return (
+    <div className="timer">
+      {mins < 10 && "0"}
+      {mins}:{seconds < 10 && "0"}
+      {seconds}
+    </div>
+  );
 }
 
 export default Timer;

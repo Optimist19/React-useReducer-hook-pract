@@ -1,8 +1,8 @@
-import { useCustomContextApiHook } from "./ContextAndReducer/ContextAndReducer";
+import { useQuiz } from "./contextApiAndReducer/ContextApiReducer";
 
 function FinishScreen() {
   
-  const { points, maxPossiblePoints, highscore, dispatch } = useCustomContextApiHook()
+  const { points, maxPossiblePoints, highscore, dispatch } = useQuiz()
 
   const percentage = (points / maxPossiblePoints) * 100;
 

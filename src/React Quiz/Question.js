@@ -1,18 +1,20 @@
-import React from 'react'
+
 import Options from './Options'
-import { useCustomContextApiHook } from './ContextAndReducer/ContextAndReducer'
+
+import { useQuiz } from './contextApiAndReducer/ContextApiReducer'
 
 function Question() {
-	// console.log(question)
 
-	const {question, dispatch, answer} = useCustomContextApiHook()
+	const {questions, index} = useQuiz()
+
+	const question = questions.at(index)
 
   return (
 	<div>
 		<h4>{question.question}</h4>
 
 		<div className='options'>
-			<Options question={question} dispatch={dispatch} answer={answer} />
+			<Options question={question}  />
 		</div>
 	</div>
   )
